@@ -2,7 +2,7 @@ import path from 'path';
 
 import { getOptions, interpolateName } from 'loader-utils';
 import { validate } from 'schema-utils';
-
+import sizeOf from 'image-size';
 import schema from './options.json';
 import { normalizePath } from './utils';
 
@@ -84,6 +84,10 @@ export default function loader(content) {
   const esModule =
     typeof options.esModule !== 'undefined' ? options.esModule : true;
 
+  if (options.dimensions) {
+    const dimensions = sizeOf(content)
+    return `${esModule ? 'export default' : 'module.exports ='} { '1x': { url: ${publicPath}, height: ${dimensions.height}, width: ${dimensions.width} }};`;
+  }
   return `${esModule ? 'export default' : 'module.exports ='} ${publicPath};`;
 }
 

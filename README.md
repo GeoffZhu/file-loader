@@ -14,6 +14,8 @@
 
 # file-loader
 
+在webpack file-loader基础上增加了对图片宽高的计算
+
 **DEPRECATED for v5**: please consider migrating to [`asset modules`](https://webpack.js.org/guides/asset-modules/).
 
 The `file-loader` resolves `import`/`require()` on a file into a url and emits the file into the output directory.

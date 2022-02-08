@@ -86,7 +86,7 @@ export default function loader(content) {
 
   if (options.dimensions) {
     const dimensions = sizeOf(content)
-    return `${esModule ? 'export default' : 'module.exports ='} { '1x': { url: ${publicPath}, height: ${dimensions.height}, width: ${dimensions.width} }};`;
+    return `${esModule ? 'export default' : 'module.exports =' } { __packager_asset: true, assets: [{ uri: ${publicPath}, height: ${dimensions.height}, width: ${dimensions.width}, scale: 1 }]};`;
   }
   return `${esModule ? 'export default' : 'module.exports ='} ${publicPath};`;
 }
